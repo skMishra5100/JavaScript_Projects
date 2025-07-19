@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            background-color: #250057;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .left {
+            height: 60vh;
+            width: 20%;
+            border: 2px dashed red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .right ,.mid{
+            height: 60vh;
+            width: 20%;
+            border: 2px dashed red;
+        }
+
+        .list {
+            height: 9vh;
+            width: 90%;
+            background-color: #a109a1;
+            margin: 15px;
+            border-radius: 3px;
+            text-align: center;
+            font-size: 19px;
+            font-family: sans-serif;
+            font-weight: bold;
+            text-transform: capitalize;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: grab;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="left " id="left">
+            <div class="list" id="list" draggable="true">item 2</div>
+            <div class="list" id="list" draggable="true">item 1</div>
+            <div class="list" id="list" draggable="true">item 3</div>
+            <div class="list" id="list" draggable="true">item 4</div>
+            <div class="list" id="list" draggable="true">item5</div>
+
+        </div>
+
+        <div class="right" id="right">
+
+
+        </div>
+        <div class="mid" id="mid">
+            
+        
+        </div>
+
+
+    </div>
+
+    <script>
+
+        let lists = document.querySelectorAll("#list");
+        let right = document.querySelector("#right");
+        let left = document.querySelector("#left");
+        let mid=document.querySelector("#mid");
+
+        for (list of lists) {
+            list.addEventListener("dragstart", function (e) {
+                let selected = e.target;
+
+                right.addEventListener("dragover", function (e) {
+                    e.preventDefault();
+                });
+
+                right.addEventListener("drop", function (e) {
+                    right.appendChild(selected);
+                    selected = null;
+                })
+
+
+                left.addEventListener("dragover", function (e) {
+                    e.preventDefault();
+                });
+
+                left.addEventListener("drop", function (e) {
+                    left.appendChild(selected);
+                    selected = null;
+                })
+
+                mid.addEventListener("dragover",function(e){
+                    e.preventDefault();
+                });
+
+                mid.addEventListener("drop",function(e){
+                    mid.appendChild(selected);
+                    selected=null;
+                })
+
+            })
+
+        }
+
+    </script>
+</body>
+
+</html>
