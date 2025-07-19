@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Calculator UI</title>
+  <title>Calculator</title>
   <style>
     * {
       box-sizing: border-box;
@@ -111,16 +111,11 @@
       <button onclick="document.getElementById('display').value+='0'">0</button>
       <button onclick="document.getElementById('display').value+='.'">.</button>
       <button class="equal" id="result" onclick="
-      const VAL=document.getElementById('display');
-      const FINAL=eval(VAL.value)
-document.getElementById('display').value=FINAL;
+      const VALUE=document.getElementById('display');
+      const CAL_output=eval(VALUE.value);
+      document.getElementById('display').value=CAL_output;
       ">=</button>
     </div>
   </div>
-
-  <script>
-
-   
-  </script>
 </body>
 </html>
