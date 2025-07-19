@@ -1,10 +1,15 @@
-<html>
-
+<html> 
 <head>
-  <title>GAME</title>
+  <title>StonePaperScissorGame</title>
 </head>
 <style>
-  button {
+
+ body {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+  }
+  .button {
     padding: 15px;
     border-radius: 20px;
     border: 0;
@@ -14,11 +19,7 @@
     background-color: rgb(10, 168, 10);
   }
 
-  body {
-    display: flex;
-    justify-content: center;
-    padding: 50px;
-  }
+
 
   .GAME {
     height: 70vh;
@@ -39,7 +40,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 50px;
   }
-  #RESET{
+  #resetBTN{
     background-color: rgb(255, 0, 51);
     padding: 10px;
     border-radius: 10px;
@@ -55,35 +56,35 @@
   <div class="GAME">
     <h1>GAME WITH COMPUTER</h1>
     <div>
-      <button onclick=" GAME_run('BAT') ">BAT</button>
-      <button onclick="GAME_run('STUMBS')">STUMBS</button>
-      <button onclick=" GAME_run('BALL')">BALL</button>
+      <button class="button" onclick=" GAME_run('STONE') ">STONE</button>
+      <button class="button" onclick="GAME_run('PAPER')">PAPER</button>
+      <button class="button" onclick=" GAME_run('SCISSOR')">SCISSOR</button>
     </div>
     <div id="draw">DRAW-</div>
-    <div id="you">YOU WON-</div>
+    <div id="user">YOU WON-</div>
     <div id="computer">COMPUTER WON-</div>
     <div id="MATCHresult">play the game with COMPUTER</div>
-    <div id="RESET">RESET</div>
+    <div id="resetBTN">RESET</div>
   </div>
   <script>
 
     const MATCHresult = document.getElementById('MATCHresult');
-    const YOU = document.getElementById('you');
-    const COMPUTER = document.getElementById("computer");
-    const DRAWW = document.getElementById("draw")
-    const RESET= document.getElementById("RESET")
+    const USER_result = document.getElementById('user');
+    const COMPUTER_WON_result= document.getElementById("computer");
+    const DRAW_result = document.getElementById("draw")
+    const RESETbtn= document.getElementById("resetBTN")
 
    
-RESET.addEventListener("click", () => {
+RESETbtn.addEventListener("click", () => {
       localStorage.clear();
-      DRAWW.innerHTML = `DRAW-0`
-      YOU.innerHTML = `YOU WON-0`
-      COMPUTER.innerHTML = `COMPUTER WON-0`
+      DRAW_result.innerHTML = `DRAW-0`;
+      USER_result.innerHTML = `YOU WON-0`;
+      COMPUTER_WON_result.innerHTML = `COMPUTER WON-0`;
       point.COMPUTERpoint = 0;
       point.DRAWpoint = 0;
       point.YOURpoint = 0;
-      MATCHresult.innerHTML = `play the game with COMPUTER`
-      MATCHresult.style.color = `white`
+      MATCHresult.innerHTML = `play the game with COMPUTER`;
+      MATCHresult.style.color = `white`;
     })
 
 
@@ -92,20 +93,19 @@ RESET.addEventListener("click", () => {
       YOURpoint:JSON.parse(localStorage.getItem('YOURpoint')),
       COMPUTERpoint:JSON.parse(localStorage.getItem('COMPUTERpoint')),
       PRINT_DRAW() {
-
         point.DRAWpoint++;
-        localStorage.setItem('DRAWpoint',JSON.stringify(point.DRAWpoint))
-        return DRAWW.innerHTML = `DRAW-${JSON.parse(localStorage.getItem('DRAWpoint'))}`
+        localStorage.setItem('DRAWpoint',JSON.stringify(point.DRAWpoint));
+        return DRAW_result.innerHTML = `DRAW-${JSON.parse(localStorage.getItem('DRAWpoint'))}`;
       },
       PRINT_WON() {
         point.YOURpoint++;
-        localStorage.setItem('YOURpoint',JSON.stringify(point.YOURpoint))
-        return YOU.innerHTML = `YOU WON-${JSON.parse(localStorage.getItem('YOURpoint'))}`
+        localStorage.setItem('YOURpoint',JSON.stringify(point.YOURpoint));
+        return USER_result.innerHTML = `YOU WON-${JSON.parse(localStorage.getItem('YOURpoint'))}`;
       },
       PRINT_LOOSE() {
         point.COMPUTERpoint++;
-        localStorage.setItem('COMPUTERpoint',JSON.stringify(point.COMPUTERpoint))
-        return COMPUTER.innerHTML = `COMPUTER WON-${JSON.parse(localStorage.getItem('COMPUTERpoint'))}`
+        localStorage.setItem('COMPUTERpoint',JSON.stringify(point.COMPUTERpoint));
+        return COMPUTER_WON_result.innerHTML = `COMPUTER WON-${JSON.parse(localStorage.getItem('COMPUTERpoint'))}`;
       }
     }
 
@@ -113,48 +113,48 @@ RESET.addEventListener("click", () => {
 
     const GAME_run = (USERCHOICE) => {
       let computerCHOICE = COMPUTERchoice();
-      if (USERCHOICE === 'BAT') {
+      if (USERCHOICE === 'STONE') {
         if (computerCHOICE === USERCHOICE) {
           MATCHresult.innerHTML = `Match Draw because you both choosen ${computerCHOICE}`;
-          MATCHresult.style.color = `yellow`
+          MATCHresult.style.color = `yellow`;
           point.PRINT_DRAW();
          
-        } else if (computerCHOICE === 'STUMBS') {
+        } else if (computerCHOICE === 'PAPER') {
           MATCHresult.innerHTML = `you loose the match because computer coosen ${computerCHOICE}`;
-          MATCHresult.style.color = `red`
+          MATCHresult.style.color = `red`;
           point.PRINT_LOOSE();
         } else {
-          MATCHresult.innerHTML = `you won because ,computer choosen ${computerCHOICE}`
-          MATCHresult.style.color = `greenyellow`
+          MATCHresult.innerHTML = `you won because ,computer choosen ${computerCHOICE}`;
+          MATCHresult.style.color = `greenyellow`;
           point.PRINT_WON();
         }
     
-      } else if (USERCHOICE === 'STUMBS') {
+      } else if (USERCHOICE === 'PAPER') {
         if (computerCHOICE === USERCHOICE) {
           MATCHresult.innerHTML = `Match Draw because you both choosen ${computerCHOICE}`;
-          MATCHresult.style.color = `yellow`
+          MATCHresult.style.color = `yellow`;
           point.PRINT_DRAW();
-        } else if (computerCHOICE === 'BALL') {
+        } else if (computerCHOICE === 'SCISSOR') {
           MATCHresult.innerHTML = `you loose the match because computer coosen ${computerCHOICE}`;
-          MATCHresult.style.color = `red`
+          MATCHresult.style.color = `red`;
           point.PRINT_LOOSE();
         } else {
-          MATCHresult.innerHTML = `you won because ,computer choosen ${computerCHOICE}`
-          MATCHresult.style.color = `greenyellow`
+          MATCHresult.innerHTML = `you won because ,computer choosen ${computerCHOICE}`;
+          MATCHresult.style.color = `greenyellow`;
           point.PRINT_WON();
         }
       } else {
         if (computerCHOICE === USERCHOICE) {
           MATCHresult.innerHTML = `Match Draw because you both choosen ${computerCHOICE}`;
-          MATCHresult.style.color = `yellow`
+          MATCHresult.style.color = `yellow`;
           point.PRINT_DRAW();
-        } else if (computerCHOICE === 'BAT') {
+        } else if (computerCHOICE === 'STONE') {
           MATCHresult.innerHTML = `you loose the match because computer coosen ${computerCHOICE}`;
-          MATCHresult.style.color = `red`
+          MATCHresult.style.color = `red`;
           point.PRINT_LOOSE();
         } else {
           MATCHresult.innerHTML = `you won because ,computer choosen ${computerCHOICE}`
-          MATCHresult.style.color = `greenyellow`
+          MATCHresult.style.color = `greenyellow`;
           point.PRINT_WON();
         }
       }
@@ -163,62 +163,15 @@ RESET.addEventListener("click", () => {
     const COMPUTERchoice = () => {
       let COMPUTERchooses = Math.random() * 3;
       if (COMPUTERchooses >= 1 && COMPUTERchooses < 2) {
-        return 'BAT';
+        return 'STONE';
       } else if (COMPUTERchooses >= 2 && COMPUTERchooses < 3) {
-        return 'STUMBS';
+        return 'PAPER';
       } else {
-        return 'BALL';
+        return 'SCISSOR';
       }
     }
-
-    // const shashank={
-    //   name:"shashank mishra",
-    //   age:23,
-    //   marriage_status:"single",
-    //   earn_status:"bussiness",
-    //   education:"BCA",
-    //   location:"delhi",
-    //   dream:"content-creator as well as full stack develper and trader",
-    //   your_love:"deepa mishra",
-    //   NUM_of_bestfriends:0,
-    // }
-
-    // console.log(typeof shashank);
-    // console.log(shashank);
-
-    // const OBJ=JSON.stringify(shashank);
-    // console.log(typeof OBJ)
-    // console.log(OBJ)
-    
-  //   const personal=localStorage.setItem('personal',JSON.stringify(shashank))
-
-  //   const DATA=JSON.parse(localStorage.getItem('personal'))
-    
-  //   console.log(DATA)
-
-  // localStorage.clear();
-
-
 
   </script>
 </body>
 
 </html>
-<!-- 
-    // const MATCHend = () => {
-    //   if (point.COMPUTERpoint == 10 || point.YOURpoint == 10 || point.DRAWpoint == 11) {
-    //     window.alert("MATCH HAS ENDED");
-    //     if (point.COMPUTERpoint == 10) {
-    //       window.alert("COMPUTER WON THE MATCH")
-    //       localStorage.setItem('COMPUTERpoint',JSON.stringify(point.COMPUTERpoint))
-    //     } else if (point.YOURpoint == 10) {
-    //       window.alert("YOU WON THE MATCH")
-    //                 localStorage.setItem('YOURpoint',JSON.stringify(point.YOURpoint))
-
-    //     } else {
-    //       window.alert(" MATCH DRAW!")
-    //                 localStorage.setItem('DRAWpoint',JSON.stringify(point.DRAWpoint))
-    //     }
-    //   }
-
-    // } -->
