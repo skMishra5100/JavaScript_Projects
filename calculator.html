@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculator UI</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .calculator {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      width: 300px;
+    }
+
+    .display {
+      background-color: #000;
+      color: #0f0;
+      font-size: 1.3rem;
+      padding: 7px;
+      border-radius: 10px;
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .buttons button {
+      padding: 20px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      background-color: #444;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .buttons button:hover {
+      background-color: #666;
+    }
+
+    .operator {
+      background-color: #f57c00;
+    }
+
+    .operator:hover {
+      background-color: #ff9800;
+    }
+
+    .equal {
+      background-color: #0d47a1;
+      grid-column: span 2;
+    }
+
+    .equal:hover {
+      background-color: #1976d2;
+    }
+
+    .clear {
+      background-color: #b71c1c;
+      color: #fff;
+    }
+
+    .clear:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" class="display" id="display"  disabled \ >
+    <div class="buttons">
+      <button class="clear" onclick="document.getElementById('display').value=''" >C</button>
+      <button>...</button>
+      <button>MU</button>
+      <button class="operator" onclick="document.getElementById('display').value+='/'" >÷</button>
+
+      <button onclick="document.getElementById('display').value+='7' " >7</button>
+      <button onclick="document.getElementById('display').value+='8'" >8</button>
+      <button onclick="document.getElementById('display').value+='9'" >9</button>
+      <button class="operator" onclick="document.getElementById('display').value+='*'" >×</button>
+
+      <button onclick="document.getElementById('display').value+='4'" >4</button>
+      <button onclick="document.getElementById('display').value+='5'" >5</button>
+      <button onclick="document.getElementById('display').value+='6'" >6</button>
+      <button class="operator" onclick="document.getElementById('display').value+='-'" >−</button>
+
+      <button onclick="document.getElementById('display').value+='1'">1</button>
+      <button onclick="document.getElementById('display').value+='2'">2</button>
+      <button onclick="document.getElementById('display').value+='3'">3</button>
+      <button class="operator" onclick="document.getElementById('display').value+='+'" >+</button>
+
+      <button onclick="document.getElementById('display').value+='0'">0</button>
+      <button onclick="document.getElementById('display').value+='.'">.</button>
+      <button class="equal" id="result" onclick="
+      const VAL=document.getElementById('display');
+      const FINAL=eval(VAL.value)
+document.getElementById('display').value=FINAL;
+      ">=</button>
+    </div>
+  </div>
+
+  <script>
+
+   
+  </script>
+</body>
+</html>
