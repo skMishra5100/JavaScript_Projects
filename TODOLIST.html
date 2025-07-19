@@ -63,11 +63,9 @@
         border: 0;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-weight: 600;
-border-radius: 7px;
-margin: 0 1rem; 
-
-
-}
+        border-radius: 7px;
+        margin: 0 1rem; 
+      }
     </style>
 </head>
 <body>
@@ -78,17 +76,11 @@ margin: 0 1rem;
 <input type="text" id="display" placeholder="Enter Your TODO..."/>
 <button id="add-todo">ADD TODO</button>
 
-<ul id="list">
-
-
-
-</ul>
+<ul id="list"></ul>
 
 <script>
 
-
 const btn=document.querySelector("#add-todo");
-
 btn.addEventListener("click",()=>{
   let display=document.querySelector("#display").value;
 
@@ -96,161 +88,22 @@ btn.addEventListener("click",()=>{
   todoList.classList.add("lists");
   todoList.innerText=display;
 
- 
-
   let deleteBTN=document.createElement("button");
- deleteBTN.classList.add("deleteBTN")
-   deleteBTN.innerText="delete ";
-
-
-todoList.appendChild(deleteBTN);
-
-
+     deleteBTN.classList.add("deleteBTN")
+     deleteBTN.innerText="delete ";
+     todoList.appendChild(deleteBTN);
+    
   deleteBTN.addEventListener("click",()=>{
-
     todoList.remove();
 deleteBTN.remove();
-
   })
-
   const list=document.querySelector("#list");
-
   list.appendChild(todoList);
-
   document.querySelector("#display").value="";
 
-
 })
-
-
-
-
 </script>
 
-
-
-    </div>
+</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-
-
-.todo-app {
-  width: 300px;
-  margin: auto;
-  text-align: center;
-}
-.completed {
-  text-decoration: line-through;
-  color: grey;
-}
-.list{
-    list-style: none;
-    font-size: 1rem;
-    font-weight: 600;
-
-}
-    </style>
-</head>
-<body>
-    <div class="todo-app">
-        <h1>To-Do List</h1>
-        <input type="text" id="task-input" placeholder="Add a new task" />
-        <button id="add-task-btn">Add Task</button>
-        <ul id="task-list"></ul>
-      </div>
-      
-
-      <script>
-
-
-document.getElementById('add-task-btn').addEventListener('click', function() {
-  const taskInput = document.getElementById('task-input').value;
-  if (taskInput === "") return;
-
-  const taskItem = document.createElement('li');
-  taskItem.classList.add("list");
-  taskItem.innerText = taskInput;
-  
-  const deleteBtn = document.createElement('button');
-  deleteBtn.innerText = 'Delete';
-  
-  deleteBtn.addEventListener('click', function() {
-    taskItem.remove();
-  });
-
-  taskItem.appendChild(deleteBtn);
-  document.getElementById('task-list').appendChild(taskItem);
-  document.getElementById('task-input').value = '';
-
-  taskItem.addEventListener('click', function() {
-    taskItem.classList.toggle('completed');
-  });
-});
-
-      </script>
-</body>
-</html> -->
