@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         .container {
             height: 100vh;
             width: 100vw;
@@ -60,29 +58,20 @@
     </style>
 
 </head>
-
 <body>
     <div class="container">
-
         <div class="left " id="left">
             <div class="list" id="list" draggable="true">item 2</div>
             <div class="list" id="list" draggable="true">item 1</div>
             <div class="list" id="list" draggable="true">item 3</div>
             <div class="list" id="list" draggable="true">item 4</div>
             <div class="list" id="list" draggable="true">item5</div>
-
         </div>
 
         <div class="right" id="right">
-
-
         </div>
         <div class="mid" id="mid">
-            
-        
         </div>
-
-
     </div>
 
     <script>
@@ -95,16 +84,13 @@
         for (list of lists) {
             list.addEventListener("dragstart", function (e) {
                 let selected = e.target;
-
                 right.addEventListener("dragover", function (e) {
                     e.preventDefault();
                 });
-
                 right.addEventListener("drop", function (e) {
                     right.appendChild(selected);
                     selected = null;
                 })
-
 
                 left.addEventListener("dragover", function (e) {
                     e.preventDefault();
@@ -123,11 +109,8 @@
                     mid.appendChild(selected);
                     selected=null;
                 })
-
             })
-
         }
-
     </script>
 </body>
 
