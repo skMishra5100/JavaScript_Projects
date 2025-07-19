@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todo List App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen p-6">
+
+  <div class="max-w-3xl mx-auto bg-white shadow rounded p-4">
+    <h1 class="text-2xl font-bold mb-4">Todo List</h1>
+
+    <!-- Add Todo Form -->
+    <form id="todo-form" class="flex flex-col md:flex-row gap-4 mb-6">
+      <input type="text" id="todo-title" placeholder="Enter todo..." class="flex-1 border rounded px-3 py-2" required>
+      <input type="date" id="todo-date" class="border rounded px-3 py-2">
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Add Todo</button>
+    </form>
+
+    <!-- Search and Filter -->
+    <div class="flex flex-col md:flex-row gap-4 mb-6">
+      <input type="text" id="search-input" placeholder="Search todos..." class="flex-1 border rounded px-3 py-2">
+      <input type="date" id="from-date" class="border rounded px-3 py-2">
+      <input type="date" id="to-date" class="border rounded px-3 py-2">
+    </div>
+
+    <!-- Loading & Error Message -->
+    <div id="loader" class="text-blue-600 mb-4 hidden">Loading...</div>
+    <div id="error" class="text-red-500 mb-4 hidden">Error loading todos. Please try again.</div>
+
+    <!-- Todo List -->
+    <ul id="todo-list" class="space-y-2 mb-6"></ul>
+
+    <!-- Pagination -->
+    <div id="pagination" class="flex gap-2 justify-center"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
